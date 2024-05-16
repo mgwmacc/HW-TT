@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,8 +18,10 @@ use Symfony\Component\HttpFoundation\Response;
 )]
 class RemoveUserCommand extends Command
 {
-    //TODO: put the path to some settings
-    private string $url = 'http://127.0.0.1:8000';
+    /**
+     * @var string
+     */
+    private string $url = '';
 
     /**
      * @var HttpClientInterface
@@ -27,10 +30,12 @@ class RemoveUserCommand extends Command
 
     /**
      * @param HttpClientInterface $httpClient
+     * @param ParameterBagInterface $parameterBag
      */
-    public function __construct(HttpClientInterface $httpClient)
+    public function __construct(HttpClientInterface $httpClient, ParameterBagInterface $parameterBag)
     {
         $this->httpClient = $httpClient;
+        $this->url        = $parameterBag->get('API_SERVER_URL');
 
         parent::__construct();
     }
