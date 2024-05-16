@@ -65,7 +65,7 @@ class UpdateGroupCommand extends Command
     {
         $inOut = new SymfonyStyle($input, $output);
 
-        $groupId = $input->getOption('groupId');
+        $groupId   = $input->getOption('groupId');
         $groupName = $input->getOption('groupName');
 
         if (!is_numeric($groupId)) {
@@ -75,7 +75,7 @@ class UpdateGroupCommand extends Command
         }
 
         $jsonData = [
-            'name'     => $groupName
+            'name' => $groupName
         ];
 
         try {

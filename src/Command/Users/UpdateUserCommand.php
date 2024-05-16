@@ -67,8 +67,8 @@ class UpdateUserCommand extends Command
     {
         $inOut = new SymfonyStyle($input, $output);
 
-        $userId = $input->getOption('userId');
-        $userName = $input->getOption('userName');
+        $userId    = $input->getOption('userId');
+        $userName  = $input->getOption('userName');
         $userEmail = $input->getOption('userEmail');
         $userGroup = $input->getOption('userGroup');
 
